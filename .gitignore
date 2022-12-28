@@ -1,4 +1,4 @@
 node_modules
 plugin.js
 .idea
-leapp-ssm-tunnels-plugin/
+leapp-ec2-instance-connect-plugin/

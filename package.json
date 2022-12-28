@@ -1,15 +1,15 @@
 {
-  "name": "leapp-ssm-tunnels-plugin",
+  "name": "leapp-ec2-instance-connect-plugin",
   "author": {
-    "name": "christian.calabrese",
-    "email": "christian.calabrese@outlook.com"
+    "name": "tonidy",
+    "email": "tonidy@outlook.com"
   },
   "icon": "icon.png",
-  "version": "1.0.13",
-  "description": "The Noovolari Leapp plugin to establish SSM tunnels on the fly! More information on how to configure and use it on https://github.com/christian-calabrese/leapp-ssm-tunnels-plugin.git",
+  "version": "1.0.1",
+  "description": "The Leapp plugin to establish SSH remoting and forwarding via EC2 instance connect",
   "repository": {
     "type": "git",
-    "url": "https://github.com/christian-calabrese/leapp-ssm-tunnels-plugin.git"
+    "url": "https://github.com/tonidy/leapp-ec2-connect-plugin.git"
   },
   "keywords": [
     "leapp-plugin",
@@ -38,9 +38,10 @@
   ],
   "license": "MPL",
   "dependencies": {
-    "@noovolari/leapp-core": "0.1.126"
+    "@noovolari/leapp-core": "0.1.129"
   },
   "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
     "copy-webpack-plugin": "^11.0.0",
     "path-browserify": "^1.0.1",
     "ts-loader": "^9.3.1",

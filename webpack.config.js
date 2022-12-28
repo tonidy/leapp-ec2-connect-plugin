@@ -1,12 +1,13 @@
 const path = require('path');
 const PACKAGE = require('./package.json');
 const CopyPlugin = require("copy-webpack-plugin");
+const os = require('os')
 
 module.exports = {
   mode: 'none',
   entry: './plugin-index.ts',
   output: {
-    path: path.resolve(__dirname, `${PACKAGE.name}`),
+    path: path.resolve(os.homedir(), '.Leapp/plugins', `${PACKAGE.name}`),
     filename: 'plugin.js',
     clean: true,
     library: {
