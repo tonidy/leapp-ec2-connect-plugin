@@ -1,4 +1,4 @@
-<h1 align="center">Leapp EC2 Instance Connect Plugin</h1>
+<h1 align="center"><a href="https://www.leapp.cloud">Leapp</a> EC2 Instance Connect Plugin</h1>
 
 <h2>Introduction</h2>
 <p>This plugin aims to help developers and AWS users in general for remoting and forwarding into EC2 instance!</p>
