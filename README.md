@@ -1,12 +1,10 @@
-<p align="center">
-  <img src="https://github.com/Noovolari/leapp/blob/master/.github/images/README-1.png#gh-dark-mode-only" alt="Leapp" height="150" />
-    <img src="https://github.com/Noovolari/leapp/blob/master/.github/images/README-1-dark.png#gh-light-mode-only" alt="Leapp" height="150" />
-</p>
-
 <h1 align="center">Leapp EC2 Instance Connect Plugin</h1>
 
 <h2>Introduction</h2>
 <p>This plugin aims to help developers and AWS users in general for remoting and forwarding into EC2 instance!</p>
+<p>This plugin source code inspiration <del>(copied)</del> based on:</p> 
+
+`https://github.com/christian-calabrese/leapp-ssm-tunnels-plugin`
 
 <h2>How it works?</h2>
 The plugin uses the `aws ec2-instance-connect send-ssh-public-key`command to upload SSH public key to EC2 instance. Then SSH-ing (remote/forward) to EC2 instance.
