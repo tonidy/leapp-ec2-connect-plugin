@@ -3,68 +3,65 @@
     <img src="https://github.com/Noovolari/leapp/blob/master/.github/images/README-1-dark.png#gh-light-mode-only" alt="Leapp" height="150" />
 </p>
 
-<h1 align="center">Leapp<br>SSM Tunnels Plugin</h1>
+<h1 align="center">Leapp EC2 Instance Connect Plugin</h1>
 
 <h2>Introduction</h2>
-<p>This plugin aims to help developers and AWS users in general  to access private resources in all their AWS accounts in one click!</p>
+<p>This plugin aims to help developers and AWS users in general for remoting and forwarding into EC2 instance!</p>
 
-<h2>How it works</h2>
-As a TypeScript novice I tried to keep the code as simple as possible.<br><br>
-The plugin uses the aws ssm start-session command to create secure and controlled connections to public and private AWS resources such as EC2 instances.
-<br><br>
- More specifically, it uses a particular feature of SSM Session Manager that AWS describes <a href="https://aws.amazon.com/it/about-aws/whats-new/2022/05/aws-systems-manager-support-port-forwarding-remote-hosts-using-session-manager/">here</a> as:
- <br>
-<q>Session Manager supports forwarding connections from a client machine to ports on remote hosts. With remote port forwarding, you can now use a managed instance as a “jump host” to securely connect to an application port on remote servers, such as databases and web servers, without exposing those servers to outside network.</q>
+<h2>How it works?</h2>
+The plugin uses the `aws ec2-instance-connect send-ssh-public-key`command to upload SSH public key to EC2 instance. Then SSH-ing (remote/forward) to EC2 instance.
 
 <h2>How to configure the tunnels you need</h2>
 
-This plugin makes use of a json configuration file (`ssm-conf.json`) where you can specify the parameters needed to establish the tunnel.
+This plugin makes use of a json configuration file (`ec2-connect-config.json`) where you can specify the parameters needed to establish the tunnel.
 
-You can find an example of such file in this repository called `ssm-conf.json.example`.
+You can use the below example to create your own file and place it in the Leapp installation folder (usually in `$HOME` (macos/linux/powershell) or `%USERPROFILE%` (windows/CMD) user directory).<br><br>
+For example:<br>
+`$HOME/.Leapp/ec2-connect-config.json`
+
+You can find an example of such file in this repository called `ec2-connect-config.example.json`
 
 ```json
 [
   {
-    "sessionName": "session1",
+    "sessionName": "Session1",
+    "availabilityZone": "ap-southeast-1c",
+    "instanceId": "i-0abcdefghijkl1234",
+    "instanceOSUser": "ec2-user",
+    "instanceIPAddress": "8.8.8.8",
+    "sshPath": "/home/username/.ssh",
+    "sshPublicKeyFile": "id_ed25519.pub",
+    "sshPrivateKeyFile": "id_ed25519",
+    "modeType": "remoting/forwarding",
+    "mode": "forwarding",
     "configs": [
       {
-        "target": "i-0221y321bde21hi72",
-        "host": "account1-db.eu-south-1.rds.amazonaws.com",
-        "portNumber": "5432",
-        "localPortNumber": "3333"
-      },
-      {
-        "target": "i-0221y321bde21hi72",
-        "host": "vpc-elasticsearch-es-xxxxxxxxxxxxxxx.eu-south-1.es.amazonaws.com",
-        "portNumber": "443",
-        "localPortNumber": "9090"
+        "remoteHost": "ec2instancename.xxxx.ap-southeast-1.rds.amazonaws.com",
+        "remotePort": "3306",
+        "localPort": "3307"
       }
-    ] 
+    ]
   },
   {
-    "sessionName": "session2",
-    "configs": [
-      {
-        "targetTagKey": "Name",
-        "targetTagValue": "bastion",
-        "host": "account2-db.us-east-1.rds.amazonaws.com",
-        "portNumber": "5432",
-        "localPortNumber": "3333"
-      }
-    ] 
+    "sessionName": "Session2",
+    "availabilityZone": "ap-southeast-1c",
+    "instanceId": "i-0abcdefghijkl1234",
+    "instanceOSUser": "ec2-user",
+    "instanceIPAddress": "8.8.8.8",
+    "sshPath": "/home/username/.ssh",
+    "sshPublicKeyFile": "id_ed25519.pub",
+    "sshPrivateKeyFile": "id_ed25519",
+    "modeType": "remoting/forwarding",
+    "mode": "remoting"
   }
 ]
 ```
 It is now possible to identify the target ec2 instance that you use as a bastion, by specifying a targetTagKey and a targetTagValue your instance is tagged with.
 
-You can use the previous example to create your own file and place it in the Leapp installation folder.<br><br>
-For example:<br>
-`Users/leappuser/.Leapp/ssm-conf.json`
-
 <h2>Plugin in action!</h2>
 It's possible to install and use this plugin as well explained by the Noovolari team throughout the Leapp's documentation that you can find here:
-<a href="https://docs.leapp.cloud/0.16.2/plugins/plugins-introduction/">Leapp plugins introduction</a><br><br>
+<a href="https://docs.leapp.cloud/0.17.0/plugins/plugins-introduction/">Leapp plugins introduction</a><br><br>
 
-The npm package name to find and install this plugin is: `leapp-ssm-tunnels-plugin`
+The npm package name to find and install this plugin is: `leapp-ec2-instance-connect-plugin`
 
 <img src="how_to_use.jpg">

@@ -1,0 +1,33 @@
+[
+  {
+    "sessionName": "Session1",
+    "availabilityZone": "ap-southeast-1c",
+    "instanceId": "i-0abcdefghijkl1234",
+    "instanceOSUser": "ec2-user",
+    "instanceIPAddress": "8.8.8.8",
+    "sshPath": "/home/username/.ssh",
+    "sshPublicKeyFile": "id_ed25519.pub",
+    "sshPrivateKeyFile": "id_ed25519",
+    "modeType": "remoting/forwarding",
+    "mode": "forwarding",
+    "configs": [
+      {
+        "remoteHost": "ec2instancename.xxxx.ap-southeast-1.rds.amazonaws.com",
+        "remotePort": "3306",
+        "localPort": "3307"
+      }
+    ]
+  },
+  {
+    "sessionName": "Session2",
+    "availabilityZone": "ap-southeast-1c",
+    "instanceId": "i-0abcdefghijkl1234",
+    "instanceOSUser": "ec2-user",
+    "instanceIPAddress": "8.8.8.8",
+    "sshPath": "/home/username/.ssh",
+    "sshPublicKeyFile": "id_ed25519.pub",
+    "sshPrivateKeyFile": "id_ed25519",
+    "modeType": "remoting/forwarding",
+    "mode": "remoting"
+  }
+]
