@@ -76,6 +76,10 @@ You can find an example of such file in this repository called `ec2-connect-conf
 
 ## How to use?
 
-Configure the plugin (see `How to configure the plugin?` section)
+1. Configure the plugin (see `How to configure the plugin?` section)
+2. Create [AWS session](https://docs.leapp.cloud/0.17.0/configuration)
+3. Right click on the session
+4. Choose Plugins
+5. Click `Start EC2 instance connect`
 
 ![How to use](how_to_use.jpg)
