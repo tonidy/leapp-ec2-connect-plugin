@@ -1,20 +1,39 @@
-<h1 align="center"><a href="https://www.leapp.cloud">Leapp</a> EC2 Instance Connect Plugin</h1>
+# [Leapp](https://www.leapp.cloud) EC2 Instance Connect Plugin</h1>
 
-<h2>Introduction</h2>
-<p>This plugin aims to help developers and AWS users in general for remoting and forwarding into EC2 instance!</p>
-<p>This plugin source code inspiration <del>(copied)</del> based on:</p> 
+## Introduction
+
+This plugin aims to help developers and AWS users in general for remoting and forwarding into EC2 instance!
+This plugin source code inspiration ~~(copied)~~ based on:
 
 `https://github.com/christian-calabrese/leapp-ssm-tunnels-plugin`
 
-<h2>How it works?</h2>
-The plugin uses the `aws ec2-instance-connect send-ssh-public-key`command to upload SSH public key to EC2 instance. Then SSH-ing (remote/forward) to EC2 instance.
+## How it works?
 
-<h2>How to configure the tunnels you need</h2>
+The plugin uses this command `aws ec2-instance-connect send-ssh-public-key` to upload SSH public key to EC2 instance. Then SSH-ing (remote/forward) to EC2 instance.
+
+## Plugin in action!
+
+It's possible to install and use this plugin as well explained by the Noovolari team throughout the Leapp's documentation that you can find here:
+[Leapp plugins introduction](https://docs.leapp.cloud/0.17.0/plugins/plugins-introduction)
+
+## How to install?
+
+1. Open Settings (⚙)
+2. Click Plugins
+3. Type `leapp-ec2-instance-connect-plugin` in `Insert an npm package name`
+4. Click plus icon (⊕)
+
+![How to install](how_to_install.png)
+
+
+## How to configure the plugin?
 
 This plugin makes use of a json configuration file (`ec2-connect-config.json`) where you can specify the parameters needed to establish the tunnel.
 
-You can use the below example to create your own file and place it in the Leapp installation folder (usually in `$HOME` (macos/linux/powershell) or `%USERPROFILE%` (windows/CMD) user directory).<br><br>
-For example:<br>
+You can use the below example to create your own file and place it in the Leapp installation folder (usually in `$HOME` (macos/linux/powershell) or `%USERPROFILE%` (windows/CMD) user directory).
+
+For example:
+
 `$HOME/.Leapp/ec2-connect-config.json`
 
 You can find an example of such file in this repository called `ec2-connect-config.example.json`
@@ -54,12 +73,9 @@ You can find an example of such file in this repository called `ec2-connect-conf
   }
 ]
 ```
-It is now possible to identify the target ec2 instance that you use as a bastion, by specifying a targetTagKey and a targetTagValue your instance is tagged with.
 
-<h2>Plugin in action!</h2>
-It's possible to install and use this plugin as well explained by the Noovolari team throughout the Leapp's documentation that you can find here:
-<a href="https://docs.leapp.cloud/0.17.0/plugins/plugins-introduction/">Leapp plugins introduction</a><br><br>
+## How to use?
 
-The npm package name to find and install this plugin is: `leapp-ec2-instance-connect-plugin`
+Configure the plugin (see `How to configure the plugin?` section)
 
-<img src="how_to_use.jpg">
+![How to use](how_to_use.jpg)
