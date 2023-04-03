@@ -1,7 +1,8 @@
 const path = require('path');
 const PACKAGE = require('./package.json');
 const CopyPlugin = require("copy-webpack-plugin");
-const os = require('os')
+const os = require('os');
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   mode: 'none',
@@ -9,12 +10,18 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, `${PACKAGE.name}`),
     // For testing
-    //path: path.resolve(os.homedir(), '.Leapp/plugins', `${PACKAGE.name}`),
+    // path: path.resolve(os.homedir(), '.Leapp/plugins', `${PACKAGE.name}`),
+    // Run locally:
+    // path.resolve('dist', `${PACKAGE.name}`)
     filename: 'plugin.js',
     clean: true,
     library: {
       type: 'commonjs2',
     },
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
   },
   plugins: [
     new CopyPlugin({
