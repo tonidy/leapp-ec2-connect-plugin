@@ -4,7 +4,8 @@ import { PluginLogLevel } from "@noovolari/leapp-core/plugin-sdk/plugin-log-leve
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
-import aws from 'aws-sdk';
+// import aws from 'aws-sdk';
+import EC2InstanceConnect from 'aws-sdk/clients/ec2instanceconnect'
 
 export class SshTunnelConfig {
     remoteHost: string;
@@ -45,7 +46,7 @@ export class LeappEc2InstanceConnectPlugin extends AwsCredentialsPlugin {
 
     sendSSHPublicKey(
         config: Ec2InstanceConnectConfig,
-        ec2InstanceConnectClient: any,
+        ec2InstanceConnectClient: EC2InstanceConnect,
         platform: string,
         session: any,
     ): Promise<any> {
@@ -86,7 +87,7 @@ export class LeappEc2InstanceConnectPlugin extends AwsCredentialsPlugin {
 
     async getCommand(
         config: Ec2InstanceConnectConfig,
-        ec2InstanceConnectClient: any,
+        ec2InstanceConnectClient: EC2InstanceConnect,
         platform: string,
         session: any,
     ) {
@@ -111,7 +112,7 @@ export class LeappEc2InstanceConnectPlugin extends AwsCredentialsPlugin {
     async getTunnelCommand(
         config: Ec2InstanceConnectConfig,
         tunnelConfig: SshTunnelConfig,
-        ec2InstanceConnectClient: any,
+        ec2InstanceConnectClient: EC2InstanceConnect,
         platform: string,
         session: any,
     ) {
@@ -135,8 +136,10 @@ export class LeappEc2InstanceConnectPlugin extends AwsCredentialsPlugin {
 
     async applySessionAction(session: Session, credentials: any): Promise<void> {
         this.pluginEnvironment.log("Starting opening EC2 instance connect", PluginLogLevel.info, true);
-        aws.config.update(LeappEc2InstanceConnectPlugin.setConfig(credentials, session.region));
-        const ec2InstanceConnectClient = new aws.EC2InstanceConnect();
+        const awsConfig = LeappEc2InstanceConnectPlugin.setConfig(credentials, session.region);
+        const ec2InstanceConnectClient = new EC2InstanceConnect(awsConfig);
+        // aws.config.update(LeappEc2InstanceConnectPlugin.setConfig(credentials, session.region));
+        // const ec2InstanceConnectClient = new aws.EC2InstanceConnect();
         const platform = process.platform;
         const homeDir = os.homedir();
 

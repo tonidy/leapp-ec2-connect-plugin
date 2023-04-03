@@ -44,6 +44,7 @@
     "@types/aws-sdk": "^2.7.0",
     "copy-webpack-plugin": "^11.0.0",
     "path-browserify": "^1.0.1",
+    "terser-webpack-plugin": "^5.3.7",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
     "webpack": "^5.74.0",
