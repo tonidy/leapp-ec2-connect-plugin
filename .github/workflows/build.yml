@@ -33,3 +33,4 @@ jobs:
         name: plugin
         path: |
           ~/.Leapp/plugins/eapp-ec2-instance-connect-plugin
+        retention-days: 1
