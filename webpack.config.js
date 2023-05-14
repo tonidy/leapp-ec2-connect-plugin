@@ -7,7 +7,9 @@ module.exports = {
   mode: 'none',
   entry: './plugin-index.ts',
   output: {
-    path: path.resolve(os.homedir(), '.Leapp/plugins', `${PACKAGE.name}`),
+    path: path.resolve(__dirname, `${PACKAGE.name}`),
+    // For testing
+    //path: path.resolve(os.homedir(), '.Leapp/plugins', `${PACKAGE.name}`),
     filename: 'plugin.js',
     clean: true,
     library: {
@@ -17,8 +19,22 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: './package.json',
-          to: `./package.json`}
+        { 
+          from: './package.json',
+          to: `./package.json`
+        },
+        { 
+          from: './icon.png',
+          to: `./icon.png`
+        },
+        { 
+          from: './README.md',
+          to: `./README.md`
+        },
+        { 
+          from: 'LICENSE',
+          to: `.`
+        }
       ]
     })
   ],
