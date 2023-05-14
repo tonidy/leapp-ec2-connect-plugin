@@ -1,12 +1,9 @@
-# Moved to https://github.com/tonidy/leapp-ec2-connect-plugin
-
-
 # [Leapp](https://www.leapp.cloud) EC2 Instance Connect Plugin</h1>
 
 ## Introduction
 
 This plugin aims to help developers and AWS users in general for remoting and forwarding into EC2 instance!
-This plugin source code inspiration ~~(copied)~~ based on:
+This plugin source code inspiration ~~(copy and edit)~~ based on:
 
 `https://github.com/christian-calabrese/leapp-ssm-tunnels-plugin`
 

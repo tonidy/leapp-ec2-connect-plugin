@@ -28,6 +28,14 @@ module.exports = {
           to: `./icon.png`
         },
         { 
+          from: './how_to_install.png',
+          to: `./how_to_install.png`
+        },
+        { 
+          from: './how_to_use.png',
+          to: `./how_to_use.png`
+        },
+        { 
           from: './README.md',
           to: `./README.md`
         },
