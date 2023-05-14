@@ -1,3 +1,6 @@
+# Moved to https://github.com/tonidy/leapp-ec2-connect-plugin
+
+
 # [Leapp](https://www.leapp.cloud) EC2 Instance Connect Plugin</h1>
 
 ## Introduction
