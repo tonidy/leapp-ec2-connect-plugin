@@ -26,10 +26,10 @@ jobs:
       run: |
         npm install
         npm run build
-        
+
     - name: Plugin artifacts
       uses: actions/upload-artifact@v3
       with:
         name: plugin
         path: |
-          .Leapp/plugins/eapp-ec2-instance-connect-plugin
+          ~/.Leapp/plugins/eapp-ec2-instance-connect-plugin
