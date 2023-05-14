@@ -30,7 +30,7 @@ jobs:
     - name: Plugin artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: plugin
+        name: plugin-artifact
         path: |
           leapp-ec2-instance-connect-plugin
         retention-days: 1
