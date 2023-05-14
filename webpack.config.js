@@ -21,27 +21,27 @@ module.exports = {
       patterns: [
         { 
           from: './package.json',
-          to: `./package.json`
+          to: './package.json'
         },
         { 
           from: './icon.png',
-          to: `./icon.png`
+          to: './icon.png'
         },
         { 
           from: './how_to_install.png',
-          to: `./how_to_install.png`
+          to: './how_to_install.png'
         },
         { 
-          from: './how_to_use.png',
-          to: `./how_to_use.png`
+          from: './how_to_use.jpg',
+          to: './how_to_use.jpg'
         },
         { 
           from: './README.md',
-          to: `./README.md`
+          to: './README.md'
         },
         { 
           from: 'LICENSE',
-          to: `.`
+          to: '.'
         }
       ]
     })
