@@ -6,16 +6,40 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Note: as we cannot use `actions/download-artifact@v3`
+      #       this possible solution from https://github.com/actions/download-artifact/issues/3
+      - name: 'Download artifact'
+        uses: actions/github-script@v3.1.0
+        with:
+          script: |
+            let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.payload.workflow_run.id,
+            });
+            let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
+              return artifact.name == "plugin-artifact"
+            })[0];
+            let download = await github.rest.actions.downloadArtifact({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              artifact_id: matchArtifact.id,
+              archive_format: 'zip',
+            });
+            let fs = require('fs');
+            fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/plugin_artifact.zip`, Buffer.from(download.data));
+
+      - name: 'Unzip artifact'
+        run: unzip plugin_artifact.zip
+
       - uses: actions/checkout@v3
+
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - uses: actions/download-artifact@v3
-        with:
-            name: plugin-artifact
       - run: npm ci
-      - run: npm publish
+      - run: npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
