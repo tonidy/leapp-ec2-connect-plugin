@@ -19,14 +19,15 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - data: [18.x]
+          - data: ["18.x"]
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - id: set-matrix
         env:
           CFG: ${{ toJSON(matrix.cfg) }}
-        run: jq -r -n 'env.CFG | fromjson | @json "result=\(.data)"' >> $GITHUB_OUTPUT
+        run: echo 'matrix=["16.x","18.x"]' >> $GITHUB_OUTPUT
+        # run: jq -r -n 'env.CFG | fromjson | @json "matrix=\(.data)"' >> $GITHUB_OUTPUT
 
   build:
     runs-on: ubuntu-latest
