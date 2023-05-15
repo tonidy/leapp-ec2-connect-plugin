@@ -50,7 +50,6 @@ jobs:
     #     name: plugin-artifact
     #     commit: ${{ github.event.pull_request.head.sha }}
     #     # run_id: ${{ github.event.workflow_run.id }}
-    #     branch: main
 
     # - name: Publish to npm
     #   run: npm publish --dry-run leapp-ec2*.tgz
