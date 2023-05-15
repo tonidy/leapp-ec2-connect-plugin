@@ -8,7 +8,7 @@ on:
         - completed
 jobs:
   deploy_to_npm:
-    if: github.event_name == 'release' && github.repository_owner == 'tonidy'
+    if: github.event_name == 'release'
     runs-on: ubuntu-latest
     steps:
       # Setup .npmrc file to publish to npm
