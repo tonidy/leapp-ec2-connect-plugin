@@ -9,7 +9,7 @@ This plugin source code inspiration ~~(copy and edit)~~ based on:
 
 ## How it works?
 
-The plugin uses this command `aws ec2-instance-connect send-ssh-public-key` to upload SSH public key to EC2 instance. Then SSH-ing (remote/forward) to EC2 instance.
+The plugin uses this command `aws ec2-instance-connect send-ssh-public-key` to upload SSH public key to EC2 instance. Then SSH-ing (remote/forward) to EC2 instance (test).
 
 ## Plugin in action!
 
