@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: plugin-artifact
-        path: *.tgz
+        path: leapp-ec2-instance-connect-plugin/*.tgz
         retention-days: 1
 
     - name: Download artifact
