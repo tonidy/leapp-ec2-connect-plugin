@@ -1,4 +1,4 @@
-name: Publish package to NPMJS
+name: CD
 on:
   release:
     types: [published]
