@@ -51,9 +51,6 @@ jobs:
         run_id: ${{ github.event.workflow_run.id }}
         branch: main
 
-    - name: Unzip artifact
-      run: unzip plugin_artifact.zip
-
     # setup .npmrc file to publish to npm
     # - name: Setup nodejs
     #   uses: actions/setup-node@v3
