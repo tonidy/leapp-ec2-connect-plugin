@@ -3,7 +3,7 @@ on:
   release:
     types: [published]
   workflow_run:
-      workflows: [Build]
+      workflows: [CI]
       types:
         - completed
 jobs:
