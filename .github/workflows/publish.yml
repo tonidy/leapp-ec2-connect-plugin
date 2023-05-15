@@ -22,6 +22,6 @@ jobs:
           name: plugin-artifact
           run_id: ${{ github.event.workflow_run.id }}
 
-      - run: npm publish --dry-run leapp-ec2*.tgz
+      - run: npm publish leapp-ec2*.tgz
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
