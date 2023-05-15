@@ -1,4 +1,4 @@
-name: Publish Package to npmjs
+name: Publish package to NPMJS
 on:
   release:
     types: [published]
@@ -8,6 +8,7 @@ on:
         - completed
 jobs:
   deploy_to_npm:
+    if: github.event_name == 'release' && github.repository_owner == 'tonidy'
     runs-on: ubuntu-latest
     steps:
       # Setup .npmrc file to publish to npm

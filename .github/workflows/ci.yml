@@ -19,14 +19,13 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - data: [16, 18]
+          - data: [18]
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - id: set-matrix
         env:
           CFG: ${{ toJSON(matrix.cfg) }}
-        # run: echo 'matrix=["16.x","18.x"]' >> $GITHUB_OUTPUT
         run: jq -r -n 'env.CFG | fromjson | @json "matrix=\(.data)"' >> $GITHUB_OUTPUT
 
   build:
@@ -53,11 +52,13 @@ jobs:
         npm run build
 
     - name: Pack
+      if: github.event_name == 'release'
       run: |
         cd leapp-ec2-instance-connect-plugin
         npm pack
 
     - name: Upload artifact
+      if: github.event_name == 'release'
       uses: actions/upload-artifact@v3
       with:
         name: plugin-artifact
