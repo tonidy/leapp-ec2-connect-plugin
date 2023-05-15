@@ -48,7 +48,8 @@ jobs:
       uses: dawidd6/action-download-artifact@v2
       with:    
         name: plugin-artifact
-        run_id: ${{ github.event.workflow_run.id }}
+        commit: ${{ github.event.pull_request.head.sha }}
+        # run_id: ${{ github.event.workflow_run.id }}
         branch: main
 
     # setup .npmrc file to publish to npm
