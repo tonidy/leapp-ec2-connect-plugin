@@ -21,7 +21,6 @@ jobs:
         with:    
           name: plugin-artifact
           run_id: ${{ github.event.workflow_run.id }}
-          branch: main
 
       - run: npm publish --dry-run
         env:
