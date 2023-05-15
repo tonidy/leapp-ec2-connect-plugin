@@ -10,13 +10,31 @@ on:
     paths-ignore:
       - "*.md"
 
+  release:
+    types: [published]
+
 jobs:
+  prebuild:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cfg:
+          - data: [18.x]
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        env:
+          CFG: ${{ toJSON(matrix.cfg) }}
+        run: jq -r -n 'env.CFG | fromjson | @json "::set-output name=result::\(.data)"'
+
   build:
     runs-on: ubuntu-latest
+    needs: [prebuild]
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: ${{ fromJson(needs.prebuild.outputs.matrix) }}
 
     steps:
     - uses: actions/checkout@v3
@@ -32,26 +50,33 @@ jobs:
         npm install
         npm run build
 
+  npm_pack:
+    runs-on: ubuntu-latest
+    needs: [prebuild, build]
+
+    strategy:
+      matrix:
+        node-version: ${{ fromJson(needs.prebuild.outputs.matrix) }}
+
+    steps:
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        registry-url: 'https://registry.npmjs.org'
+
     - name: Pack
       run: |
         cd leapp-ec2-instance-connect-plugin
         npm pack
 
+  create_artifact:
+    runs-on: ubuntu-latest
+    needs: npm_pack
+    steps:
     - name: Create plugin artifacts
       uses: actions/upload-artifact@v3
       with:
         name: plugin-artifact
         path: leapp-ec2-instance-connect-plugin/*.tgz
         retention-days: 1
-
-    # - name: Download artifact
-    #   uses: dawidd6/action-download-artifact@v2
-    #   with:    
-    #     name: plugin-artifact
-    #     commit: ${{ github.event.pull_request.head.sha }}
-    #     # run_id: ${{ github.event.workflow_run.id }}
-
-    # - name: Publish to npm
-    #   run: npm publish --dry-run leapp-ec2*.tgz
-    #   env:
-    #       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
