@@ -8,7 +8,9 @@ on:
         - completed
 jobs:
   deploy_to_npm:
-    if: github.event_name == 'release'
+    if: |
+      github.event_name == 'release' ||
+      github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       # Setup .npmrc file to publish to npm
