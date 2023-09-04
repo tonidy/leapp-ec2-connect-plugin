@@ -38,7 +38,7 @@
   ],
   "license": "MPL",
   "dependencies": {
-    "@noovolari/leapp-core": "0.1.142"
+    "@noovolari/leapp-core": "0.1.143"
   },
   "devDependencies": {
     "@types/aws-sdk": "^2.7.0",
