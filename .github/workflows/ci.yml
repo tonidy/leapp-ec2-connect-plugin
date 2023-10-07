@@ -53,16 +53,16 @@ jobs:
 
     - name: Pack
       if: |
-        github.event_name == 'release' ||
-        github.event_name == 'push'
+        github.event_name == 'release' &&
+        startsWith(github.ref, 'refs/tags/v')
       run: |
         cd leapp-ec2-instance-connect-plugin
         npm pack
 
     - name: Upload artifact
       if: |
-        github.event_name == 'release' ||
-        github.event_name == 'push'
+        github.event_name == 'release' &&
+        startsWith(github.ref, 'refs/tags/v')
       uses: actions/upload-artifact@v3
       with:
         name: plugin-artifact
