@@ -70,9 +70,8 @@ jobs:
         retention-days: 1
   deploy_to_npm:
     if: |
-      startsWith(github.ref, 'refs/tags/v') &&
       github.event_name == 'release' &&
-      github.event.workflow_run.conclusion == 'success'
+      startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
       # Setup .npmrc file to publish to npm
