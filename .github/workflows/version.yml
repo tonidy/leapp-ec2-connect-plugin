@@ -18,6 +18,9 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - run: npm version patch -m "[RELEASE] %s"
+      - run: |
+          git config --global user.name github-actions[bot]
+          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
+          npm version patch -m "[RELEASE] %s"
 
       - uses: stefanzweifel/git-auto-commit-action@v5
