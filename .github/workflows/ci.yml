@@ -68,3 +68,25 @@ jobs:
         name: plugin-artifact
         path: leapp-ec2-instance-connect-plugin/*.tgz
         retention-days: 1
+  deploy_to_npm:
+    if: |
+      startsWith(github.ref, 'refs/tags/v') &&
+      github.event_name == 'release' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:    
+          name: plugin-artifact
+          run_id: ${{ github.event.workflow_run.id }}
+
+      - run: npm publish leapp-ec2*.tgz
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
