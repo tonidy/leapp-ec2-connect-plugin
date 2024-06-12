@@ -5,7 +5,7 @@
     "email": "tonidy@outlook.com"
   },
   "icon": "icon.png",
-  "version": "1.0.55",
+  "version": "1.0.56",
   "description": "The Leapp plugin to establish SSH remoting and forwarding via EC2 instance connect",
   "repository": {
     "type": "git",
