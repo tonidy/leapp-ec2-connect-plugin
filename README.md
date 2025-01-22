@@ -84,4 +84,4 @@ You can find an example of such file in this repository called `ec2-connect-conf
 
 ![How to use](how_to_use.jpg)
 
-<!-- trigger -->
+<!-- triggers -->
