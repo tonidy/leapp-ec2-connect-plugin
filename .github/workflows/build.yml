@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - data: [18, 20]
+          - data: [18, 20, 22]
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
