@@ -10,58 +10,6 @@ on:
     paths-ignore:
       - "*.md"
 
-  workflow_dispatch:
-    inputs:
-      env:
-        description: "GitHub Environment to use (secrets/vars)"
-        type: choice
-        required: true
-        default: dev
-        options:
-          - dev
-          - stage
-          - prod
-      project:
-        description: "Playwright project to run"
-        type: choice
-        required: true
-        default: login
-        options:
-          - registration
-          - login
-          - startpage
-          - cookie-manager
-          - instawp-setup
-          # Still not working due to adsimple ID setup
-          # - instawp-cookie-manager
-      spec:
-        description: "Optional spec path under tests/ (e.g. tests/wordpress/login.spec.ts)"
-        required: false
-        type: string
-      grep:
-        description: "Optional title filter passed as -g"
-        required: false
-        type: string
-      headed:
-        description: "Run in headed mode"
-        required: false
-        default: false
-        type: boolean
-      capture_media:
-        description: "Capture screenshots/videos (CAPTURE_MEDIA)"
-        required: false
-        default: true
-        type: boolean
-      click_effects:
-        description: "Enable click effects overlay (CLICK_EFFECTS)"
-        required: false
-        default: true
-        type: boolean
-      click_effects_slowmo_ms:
-        description: "Ripple slowMo delay in ms (CLICK_EFFECTS_SLOWMO_MS)"
-        required: false
-        type: string
-
 
 jobs:
   prebuild:
