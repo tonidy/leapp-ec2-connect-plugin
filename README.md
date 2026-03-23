@@ -14,7 +14,7 @@ The plugin uses this command `aws ec2-instance-connect send-ssh-public-key` to u
 ## Plugin in action!
 
 It's possible to install and use this plugin as well explained by the Noovolari team throughout the Leapp's documentation that you can find here:
-[Leapp plugins introduction](https://docs.leapp.cloud/0.17.0/plugins/plugins-introduction)
+[Leapp plugins introduction](https://docs.leapp.cloud/0.26.1/plugins/plugins-introduction)
 
 ## How to install?
 
