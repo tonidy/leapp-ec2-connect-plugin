@@ -6,6 +6,10 @@ on:
     paths-ignore:
       - "*.md"
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -54,8 +58,3 @@ jobs:
 
       - name: Push to NPM
         run: npm publish --access public leapp-ec2*.tgz
-
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          token: ${{ secrets.NPM_TOKEN }}
