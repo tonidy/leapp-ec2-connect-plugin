@@ -8,9 +8,9 @@ import path from 'path';
 import EC2InstanceConnect from 'aws-sdk/clients/ec2instanceconnect'
 
 export class SshTunnelConfig {
-    remoteHost: string;
-    remotePort: string;
-    localPort: string;
+    remoteHost!: string;
+    remotePort!: string;
+    localPort!: string;
 }
 
 export class Ec2InstanceConnectConfig {
