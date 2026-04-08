@@ -14,16 +14,16 @@ export class SshTunnelConfig {
 }
 
 export class Ec2InstanceConnectConfig {
-    sessionName: string;
-    availabilityZone: string; // The zone where the instance was launched
-    instanceId: string; // The instance ID to publish the key to.
-    instanceOSUser: string; // This should be the user you wish to be when ssh-ing to the instance (eg, ec2-user@[instance IP])
-    instanceIPAddress: string;
-    sshPath: string;
-    sshPublicKeyFile: string;
-    sshPrivateKeyFile: string;
-    mode: string;
-    configs: SshTunnelConfig[];
+    sessionName!: string;
+    availabilityZone!: string; // The zone where the instance was launched
+    instanceId!: string; // The instance ID to publish the key to.
+    instanceOSUser!: string; // This should be the user you wish to be when ssh-ing to the instance (eg, ec2-user@[instance IP])
+    instanceIPAddress!: string;
+    sshPath!: string;
+    sshPublicKeyFile!: string;
+    sshPrivateKeyFile!: string;
+    mode!: string;
+    configs!: SshTunnelConfig[];
 }
 
 export class LeappEc2InstanceConnectPlugin extends AwsCredentialsPlugin {
